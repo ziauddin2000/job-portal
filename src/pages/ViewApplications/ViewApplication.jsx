@@ -21,7 +21,9 @@ const ViewApplication = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        if (data.modifiedCount > 0) {
+          alert("Status Updated Successfully");
+        }
       });
   };
 
@@ -36,9 +38,9 @@ const ViewApplication = () => {
           {/* head */}
           <thead>
             <tr>
-              <th></th>
               <th>SL</th>
               <th>Email</th>
+              <th>Github</th>
               <th>Status</th>
             </tr>
           </thead>
@@ -55,9 +57,9 @@ const ViewApplication = () => {
                     className="select"
                   >
                     <option disabled={true}>Change Status</option>
-                    <option>Interview</option>
-                    <option>Hired</option>
-                    <option>Rejected</option>
+                    <option value="Interview">Interview</option>
+                    <option value="Hired">Hired</option>
+                    <option value="Rejected">Rejected</option>
                   </select>
                 </td>
               </tr>

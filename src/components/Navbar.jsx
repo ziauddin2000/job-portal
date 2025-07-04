@@ -9,9 +9,9 @@ const Navbar = () => {
 
   let handleLogout = () => {
     signOutUser()
-      .then((res) => {
+      .then(() => {
         navigate("/signin");
-        console.log(res);
+        //console.log(res);
       })
       .catch((error) => {
         console.log(error);
