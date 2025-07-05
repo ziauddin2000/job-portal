@@ -12,13 +12,16 @@ const ViewApplication = () => {
       status,
     };
 
-    fetch(`http://localhost:5000/application/status/${app_id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(updateStatus),
-    })
+    fetch(
+      `https://job-portal-server-ten-mu.vercel.app/application/status/${app_id}`,
+      {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(updateStatus),
+      }
+    )
       .then((res) => res.json())
       .then((data) => {
         if (data.modifiedCount > 0) {

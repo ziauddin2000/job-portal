@@ -48,14 +48,20 @@ const AuthProvider = ({ children }) => {
         // verfify token
         let user = { email: currentUser.email };
         axios
-          .post("http://localhost:5000/jwt", user, { withCredentials: true })
+          .post("https://job-portal-server-ten-mu.vercel.app/jwt", user, {
+            withCredentials: true,
+          })
           .then(() => {
             setUser(currentUser);
             setLoading(false);
           });
       } else {
         axios
-          .post("http://localhost:5000/logout", {}, { withCredentials: true })
+          .post(
+            "https://job-portal-server-ten-mu.vercel.app/logout",
+            {},
+            { withCredentials: true }
+          )
           .then((res) => {
             console.log(res.data);
             setLoading(false);

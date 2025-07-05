@@ -22,7 +22,7 @@ const JobApply = () => {
       portfolio,
     };
 
-    fetch("http://localhost:5000/job-apply", {
+    fetch("https://job-portal-server-ten-mu.vercel.app/job-apply", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -1,28 +1,31 @@
 import { useEffect, useState } from "react";
 import UseAuth from "../hooks/UseAuth";
 import axios from "axios";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const MyApplications = () => {
   let { user } = UseAuth();
   const [jobs, setJobs] = useState([]);
+  let axiosSecure = useAxiosSecure();
 
+  // ==== Normal way to get data from server ====
+
+  // useEffect(() => {
+  //   axios
+  //     .get(`https://job-portal-server-ten-mu.vercel.app/job-application?email=${user.email}`, {
+  //       withCredentials: true,
+  //     })
+  //     .then((res) => {
+  //       //console.log(res.data);
+  //       setJobs(res.data);
+  //     });
+  // }, [user.email]);
+
+  // === Using Axios Secure === (total path ta r call  kora lagce nah, useSecure er moddhe baseURL set kora ache)
   useEffect(() => {
-    /* fetch(`http://localhost:5000/job-application?email=${user.email}`, {
-      method: "GET",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        setJobs(data);
-      }); */
-
-    axios
-      .get(`http://localhost:5000/job-application?email=${user.email}`, {
-        withCredentials: true,
-      })
-      .then((res) => {
-        //console.log(res.data);
-        setJobs(res.data);
-      });
+    axiosSecure.get(`/job-application?email=${user.email}`).then((res) => {
+      setJobs(res.data);
+    });
   }, [user.email]);
 
   return (

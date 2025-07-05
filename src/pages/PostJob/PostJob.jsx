@@ -20,7 +20,7 @@ const PostJob = () => {
     newJob.requirements = newJob.requirements.split("\n");
     newJob.responsibilities = newJob.responsibilities.split("\n");
 
-    fetch("http://localhost:5000/job/new", {
+    fetch("https://job-portal-server-ten-mu.vercel.app/job/new", {
       method: "POST",
       headers: {
         "content-type": "application/json",
